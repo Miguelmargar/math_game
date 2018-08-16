@@ -9,19 +9,31 @@
 </head>
 
 <body>
+
+    <form id="chooseLevelForm" name="chooseLevelForm" onsubmit="chooseLevel(); return false;" data-level="easy" action="#">
+        <h4>Easy</h4>
+        <input type="radio" name="level" value="easy" id="level_easy" checked>
+        <h4> Medium</h4>
+        <input type="radio" name="level" value="medium" id="level_medium">
+        <h4> Hard </h4>
+        <input type="radio" name="level" value="hard" id="level_hard"><br>
+        <input type="submit" name="submit" value="Select" />
+    </form>
+    <br>
+
     <button onclick="setAddGame()">Addition</button>
     <button onclick="setSubGame()">Substraction</button>
     <button onclick="setMultiGame()">Multiplication</button>
 
     <p>Your score: <span id="score">0</span></p>
-    
+
     <p class="scoredes" id="question"></p>
     <form id="quizForm" name="answerForm" onsubmit="checkAnswer();  return false;" action="#" data-gametype="addition" class="scoredes">
         Enter your answer: <input type="number" name="answer">
         <input type="hidden" name="rightAnswer">
         <input type="submit" value="submit" />
     </form>
-    
+
     <script type="text/javascript" src="game.js"></script>
 </body>
 

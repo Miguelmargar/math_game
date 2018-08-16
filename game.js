@@ -2,7 +2,21 @@ let
 score = 0,
 scoreBox = document.getElementById("score"),
 questionBox = document.getElementById("question"),
-answerForm = document.getElementById("quizForm");
+answerForm = document.getElementById("quizForm"),
+level = document.getElementById("chooseLevelForm").getAttribute("data-level");
+
+// select level function--------------------------------------
+function chooseLevel() {
+    if(document.getElementById('level_easy').checked) {
+        level = 'easy';
+    }else if (document.getElementById('level_medium').checked) {
+        level = 'medium';
+    }else {
+        level = 'hard';
+    }
+    console.log(level)
+    return false;
+}
 
 
 // set sum, rest or multiplication challenge----------------------
