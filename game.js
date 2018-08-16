@@ -5,7 +5,7 @@ questionBox = document.getElementById("question"),
 answerForm = document.getElementById("quizForm");
 
 
-// set sum, rest or multiplication challenge
+// set sum, rest or multiplication challenge----------------------
 function setAddGame() {
     answerForm.setAttribute("data-gametype", "addition");
     addquiz();
@@ -22,12 +22,12 @@ function setMultiGame() {
 }
 
 
-// create sum, rest and multiplication functions
+// create sum, rest and multiplication functions------------------
 function addquiz() {
     let num1 = Math.floor(Math.random() * 50);
     let num2 = Math.floor(Math.random() * 50);
     
-    questionbox.textContent = "What is: " + num1 + " + " + num2 + "?";
+    questionBox.textContent = "What is: " + num1 + " + " + num2 + "?";
     
     answerForm["rightAnswer"].value = (num1 + num2);
 }
@@ -38,10 +38,10 @@ function subquiz() {
     let num2 = Math.floor(Math.random()* 50);
     
     if (num1 >= num2) {
-        questionbox.textContent = "What is: " + num1 + " - " + num2 + "?";
+        questionBox.textContent = "What is: " + num1 + " - " + num2 + "?";
         answerForm["rightAnswer"].value = (num1 - num2);
     } else if (num1 < num2) {
-        questionbox.textContent = "What is: " + num2 + " - " + num1 + "?";
+        questionBox.textContent = "What is: " + num2 + " - " + num1 + "?";
         answerForm["rightAnswer"].value = (num2 - num1);
     }
 }
@@ -51,11 +51,30 @@ function multiquiz() {
     let num1 = Math.floor(Math.random() * 50);
     let num2 = Math.floor(Math.random()* 50);
     
-    questionbox.textContent = "What is: " + num1 + " * " + num2 + "?";
+    questionBox.textContent = "What is: " + num1 + " * " + num2 + "?";
     
     answerForm["rightAnswer"].value = (num1 * num2);
 }
 multiquiz();
 
-
-
+// check answer function ----------------------------------
+function checkAnswer() {
+    let gametype = answerForm.getAttribute("data-gametype");
+    if (answerForm["answer"].value == answerForm["rightAnswer"].value) {
+        alert("Hey! You got it right");
+        score++;
+    } else {
+        alert("Oh no! A wrong answer: (");
+        score--;
+    }
+    answerForm["answer"].value = "";
+    scoreBox.textContent = score;
+    if (gametype == "addition") {
+        addquiz();
+    } else if (gametype == "substraction") {
+        subquiz();
+    } else if (gametype == "multiplication") {
+        multiquiz();
+    }
+    return false;
+}
