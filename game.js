@@ -18,7 +18,6 @@ function chooseLevel() {
     else if (hard.checked) {
         answerForm.setAttribute("data-level", "hard");
     }
-    console.log(level)
     return false;
 }
 
