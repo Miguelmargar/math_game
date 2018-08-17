@@ -3,16 +3,20 @@ score = 0,
 scoreBox = document.getElementById("score"),
 questionBox = document.getElementById("question"),
 answerForm = document.getElementById("quizForm"),
-level = document.getElementById("chooseLevelForm").getAttribute("data-level");
+easy = document.getElementById("level_easy"),
+medium = document.getElementById("level_medium"),
+hard = document.getElementById("level_hard");
 
 // select level function--------------------------------------
 function chooseLevel() {
-    if(document.getElementById('level_easy').checked) {
-        level = 'easy';
-    }else if (document.getElementById('level_medium').checked) {
-        level = 'medium';
-    }else {
-        level = 'hard';
+    if (easy.checked) {
+        answerForm.setAttribute("data-level", "easy");
+    }
+    else if (medium.checked) {
+        answerForm.setAttribute("data-level", "medium");
+    }
+    else if (hard.checked) {
+        answerForm.setAttribute("data-level", "hard");
     }
     console.log(level)
     return false;
@@ -36,17 +40,31 @@ function setMultiGame() {
 }
 
 
-// create sum, rest and multiplication functions------------------
+// Sum function------------------------------------------------
 function addquiz() {
-    let num1 = Math.floor(Math.random() * 50);
-    let num2 = Math.floor(Math.random() * 50);
-    
-    questionBox.textContent = "What is: " + num1 + " + " + num2 + "?";
-    
-    answerForm["rightAnswer"].value = (num1 + num2);
+    if (answerForm.getAttribute("data-level") == "easy") {
+        let num1 = Math.floor(Math.random() * 10);
+        let num2 = Math.floor(Math.random() * 10);
+        questionBox.textContent = "What is: " + num1 + " + " + num2 + "?";
+        answerForm["rightAnswer"].value = (num1 + num2);
+    }
+    else if (answerForm.getAttribute("data-level") == "medium") {
+        let num1 = Math.floor(Math.random() * 50);
+        let num2 = Math.floor(Math.random() * 50);
+        questionBox.textContent = "What is: " + num1 + " + " + num2 + "?";
+        answerForm["rightAnswer"].value = (num1 + num2);
+    }
+    else if (answerForm.getAttribute("data-level") == "hard") {
+        let num1 = Math.floor(Math.random() * 100);
+        let num2 = Math.floor(Math.random() * 100);
+        questionBox.textContent = "What is: " + num1 + " + " + num2 + "?";
+        answerForm["rightAnswer"].value = (num1 + num2);
+    }
 }
 addquiz();
 
+
+// Substraction function---------------------------------------
 function subquiz() {
     let num1 = Math.floor(Math.random() * 50);
     let num2 = Math.floor(Math.random()* 50);
@@ -61,6 +79,8 @@ function subquiz() {
 }
 subquiz();
 
+
+// Multiplication function---------------------------------------
 function multiquiz() {
     let num1 = Math.floor(Math.random() * 50);
     let num2 = Math.floor(Math.random()* 50);
@@ -70,6 +90,7 @@ function multiquiz() {
     answerForm["rightAnswer"].value = (num1 * num2);
 }
 multiquiz();
+
 
 // check answer function ----------------------------------
 function checkAnswer() {
