@@ -110,12 +110,30 @@ subquiz();
 
 // Multiplication function---------------------------------------
 function multiquiz() {
-    let num1 = Math.floor(Math.random() * 50);
-    let num2 = Math.floor(Math.random() * 50);
+    if (answerForm.getAttribute("data-level") == "easy") {
+        let num1 = Math.floor(Math.random() * 10);
+        let num2 = Math.floor(Math.random() * 10);
 
-    questionBox.textContent = "What is: " + num1 + " * " + num2 + "?";
+        questionBox.textContent = "What is: " + num1 + " * " + num2 + "?";
 
-    answerForm["rightAnswer"].value = (num1 * num2);
+        answerForm["rightAnswer"].value = (num1 * num2);
+    }
+    else if (answerForm.getAttribute("data-level") == "medium") {
+        let num1 = Math.floor(Math.random() * 50);
+        let num2 = Math.floor(Math.random() * 50);
+
+        questionBox.textContent = "What is: " + num1 + " * " + num2 + "?";
+
+        answerForm["rightAnswer"].value = (num1 * num2);
+    }
+    else if (answerForm.getAttribute("data-level") == "hard") {
+        let num1 = Math.floor(Math.random() * 100);
+        let num2 = Math.floor(Math.random() * 100);
+
+        questionBox.textContent = "What is: " + num1 + " * " + num2 + "?";
+
+        answerForm["rightAnswer"].value = (num1 * num2);
+    }
 }
 multiquiz();
 
